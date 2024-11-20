@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+:root {
+    --light-neutral: #fdf0d5;
+    --dark-neutral: #003049;
+    --medium-neutral: #669bbc;
+    --dark-accent: #780000;
+    --medium-accent: #c1121f;
+}
+
+body {
+    font-family: "Laila", serif;
+    font-weight: 400;
+    background: var(--light-neutral);
+    min-width: 354px;
+    min-height: 100%;
+    align-self: center;
+    margin: 0 auto;
+}
+
+table {
+    width: 90%;
+    max-width: 800px;
+    background-color: var(--dark-neutral);
+    color: white;
+    border-collapse: collapse;
+    border: 2px solid black;
+    margin: 15px auto;
+  }
+  
+  th, td {
+    border: 1px solid var(--medium-neutral);
+    padding: 8px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: var(--medium-neutral);
+    font-weight: bold;
+  }
+  
+  .edit-button, .delete-button {
+    margin: 0 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .edit-button {
+    color: greenyellow;
+  }
+
+  .delete-button {
+    color: rgb(248, 93, 127);
+  }
+
+
+  .actions, .cost, .retail {
+    text-align: center;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+  
+  .toggle-page {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+    text-decoration: none;
+    background-color: var(--medium-accent);
+    color: White;
+    font-weight: bold;
+    border-radius: 50%;
+  }

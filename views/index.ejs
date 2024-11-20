@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <script></script>
+    <script src="/main.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Laila:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Product Management</h1>
+    
+    <h2>Current Products</h2>
+    <table >
+        <thead>
+            <tr class="products">
+                <th class="prod">Item</span>
+                <th class="desc">Description</span>
+                <th class="cost">Cost</span>
+                <th class="retail">Retail</span>
+                <th class="actions">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(prod => { %>
+                <tr>
+                    <td class="prod"><%= prod.product %></span> 
+                    <td class="desc"><%= prod.description %></span>
+                    <td class="cost">$<%= prod.cost %></span>
+                    <td class="retail">$<%= prod.retail %></span>
+                    <td class="actions">
+                        <a href="/products/<%= prod._id %>/edit" class="edit-button">Edit</a>
+                        <form action="/products/<%= prod._id %>/delete" method="POST" style="display:inline;">
+                            <button type="submit" class="delete-button">delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>    
+        </tbody>
+    </table>
+    <a href="/newequip" >
+        <button class="toggle-page">Add a Product</button>
+    </a>
+    
+</body>
+</html>
