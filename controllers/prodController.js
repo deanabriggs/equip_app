@@ -50,13 +50,20 @@ const updateProd = async (req, res) => {
         const prodId = req.params.id;
         const updateData = req.body;
         
+        // Ensure prodId is a valid ObjectId
+        if (!ObjectId.isValid(prodId)) {
+            return res.status(400).send("Invalid product ID.");
+        }
+
+        // Ensure prodId is a valid ObjectId
+        if (!ObjectId.isValid(prodId)) {
+            return res.status(400).send("Invalid product ID.");
+        }
+
         const result = await db.collection("products").updateOne(
-            { _id: new require("mongodb").ObjectId(prodId)},
+            { _id: new ObjectId(prodId)},
             { $set: updateData }
         );
-        if (result.modifiedCount === 0) {
-            return res.status(404).send("Product not found or no changes made.");
-        }
 
         console.log("Updated product: ", result);
         res.redirect("/");
@@ -70,8 +77,17 @@ const deleteProd = async (req, res) => {
     try {
         const db = getDb();
         const prodId = req.params.id;
+
+        // Log the prodId for debugging
+        console.log("Product ID for deletion:", prodId);
+        
+        // Ensure prodId is a valid ObjectId
+        if (!ObjectId.isValid(prodId)) {
+            return res.status(400).send("Invalid product ID.");
+        }
+
         const result = await db.collection("products").deleteOne({
-            _id: new require("mongodb").ObjectId(prodId),
+            _id: new ObjectId(prodId),
         });
 
         if (result.deletedCount === 0) {
@@ -91,9 +107,11 @@ const getEditForm = async (req, res) => {
     try {
         const db = getDb();
         const prodId = req.params.id;
+
         if (!ObjectId.isValid(prodId)) {
             return res.status(400).send("Invalid product ID.");
         }
+        
         const product = await db.collection("products").findOne({ _id: new ObjectId(prodId) });
         if (!product) {
             return res.status(404).send("Product not found.");

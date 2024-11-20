@@ -10,6 +10,6 @@ router.get("/newequip", newEquipForm);  // Show form to add a new product
 router.post("/newequip", createProd);  // Add new product to DB
 router.get("/products/:id/edit", getEditForm);  // Show edit form for a specific product
 router.post("/products/:id/edit", updateProd);  // Handle form submission to update the product
-router.delete("/products/:id/delete", deleteProd);  // Handle delete request for product
+router.post("/products/:id/delete", deleteProd);  // Handle delete request for product
 
 module.exports = router;
